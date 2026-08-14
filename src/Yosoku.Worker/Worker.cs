@@ -1,6 +1,10 @@
+using Microsoft.Extensions.Options;
+using Yosoku.AlphaVantage;
+using Yosoku.Worker.Configuration;
+
 namespace Yosoku.Worker;
 
-public class Worker(ILogger<Worker> logger) : BackgroundService
+public class Worker(ILogger<Worker> logger, AlphaVantageClient alphaVantageClient) : BackgroundService
 {
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
@@ -8,7 +12,7 @@ public class Worker(ILogger<Worker> logger) : BackgroundService
         {
             if (logger.IsEnabled(LogLevel.Information))
             {
-                logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
+                var chingy = await alphaVantageClient.ImportDailyAsync("MSFT", stoppingToken);
             }
             await Task.Delay(1000, stoppingToken);
         }
