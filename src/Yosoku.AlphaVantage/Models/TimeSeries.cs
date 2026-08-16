@@ -1,25 +1,24 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace Yosoku.AlphaVantage.Models;
 
-[DataContract]
 public class TimeSeries
 {
-    [DataMember(Name = "1. open")]
+    [JsonPropertyName("1. open")]
     public double Open { get; set; }
 
-    [DataMember(Name = "2. high")]
+    [JsonPropertyName("2. high")]
     public double High { get; set; }
 
-    [DataMember(Name = "3. low")]
+    [JsonPropertyName("3. low")]
     public double Low { get; set; }
 
-    [DataMember(Name = "4. close")]
+    [JsonPropertyName("4. close")]
     public double Close { get; set; }
 
-    [DataMember(Name = "5. adjusted close")]
+    [JsonPropertyName("5. adjusted close")]
     public double AdjustedClose { get; set; }
 
-    [DataMember(Name = "6. volume")]
+    [JsonPropertyName("6. volume")]
     public double Volume { get; set; }
 }

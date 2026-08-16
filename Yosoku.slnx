@@ -1,6 +1,7 @@
 <Solution>
   <Folder Name="/src/">
     <Project Path="src/Yosoku.AlphaVantage/Yosoku.AlphaVantage.csproj" />
+    <Project Path="src/Yosoku.Data/Yosoku.Data.csproj" Id="2a4435ce-ab88-4f75-823e-22f5bd15aec3" />
     <Project Path="src/Yosoku.Worker/Yosoku.Worker.csproj" />
   </Folder>
 </Solution>

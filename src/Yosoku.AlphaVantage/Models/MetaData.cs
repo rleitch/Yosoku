@@ -1,19 +1,18 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace Yosoku.AlphaVantage.Models;
 
-[DataContract]
 public class MetaData
 {
-    [DataMember(Name = "1. Information")]
+    [JsonPropertyName("1. Information")]
     public required string Information { get; set; }
 
-    [DataMember(Name = "2. Symbol")]
+    [JsonPropertyName("2. Symbol")]
     public required string Symbol { get; set; }
 
-    [DataMember(Name = "3. Last Refreshed")]
+    [JsonPropertyName("3. Last Refreshed")]
     public required string LastRefreshed { get; set; }
 
-    [DataMember(Name = "4. Time Zone")]
-    public required string TimeZone { get; set; }
+    [JsonPropertyName("4. Time Zone")]
+    public string? TimeZone { get; set; }
 }

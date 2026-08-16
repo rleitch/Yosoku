@@ -6,120 +6,120 @@ namespace Yosoku.AlphaVantage.Models;
 public class CashFlow
 {
     [JsonPropertyName("capitalExpenditures")]
-    [JsonConverter(typeof(NoneHandlingDecimalConverter))]
-    public decimal? CapitalExpenditures { get; set; }
+    [JsonConverter(typeof(NoneSafeDoubleConverter))]
+    public double? CapitalExpenditures { get; set; }
 
     [JsonPropertyName("cashflowFromFinancing")]
-    [JsonConverter(typeof(NoneHandlingDecimalConverter))]
-    public decimal? CashflowFromFinancing { get; set; }
+    [JsonConverter(typeof(NoneSafeDoubleConverter))]
+    public double? CashflowFromFinancing { get; set; }
 
     [JsonPropertyName("cashflowFromInvestment")]
-    [JsonConverter(typeof(NoneHandlingDecimalConverter))]
-    public decimal? CashflowFromInvestment { get; set; }
+    [JsonConverter(typeof(NoneSafeDoubleConverter))]
+    public double? CashflowFromInvestment { get; set; }
 
     [JsonPropertyName("changeInCashAndCashEquivalents")]
-    [JsonConverter(typeof(NoneHandlingDecimalConverter))]
-    public decimal? ChangeInCashAndCashEquivalents { get; set; }
+    [JsonConverter(typeof(NoneSafeDoubleConverter))]
+    public double? ChangeInCashAndCashEquivalents { get; set; }
 
     [JsonPropertyName("changeInExchangeRate")]
-    [JsonConverter(typeof(NoneHandlingDecimalConverter))]
-    public decimal? ChangeInExchangeRate { get; set; }
+    [JsonConverter(typeof(NoneSafeDoubleConverter))]
+    public double? ChangeInExchangeRate { get; set; }
 
     [JsonPropertyName("changeInInventory")]
-    [JsonConverter(typeof(NoneHandlingDecimalConverter))]
-    public decimal? ChangeInInventory { get; set; }
+    [JsonConverter(typeof(NoneSafeDoubleConverter))]
+    public double? ChangeInInventory { get; set; }
 
     [JsonPropertyName("changeInOperatingAssets")]
-    [JsonConverter(typeof(NoneHandlingDecimalConverter))]
-    public decimal? ChangeInOperatingAssets { get; set; }
+    [JsonConverter(typeof(NoneSafeDoubleConverter))]
+    public double? ChangeInOperatingAssets { get; set; }
 
     [JsonPropertyName("changeInOperatingLiabilities")]
-    [JsonConverter(typeof(NoneHandlingDecimalConverter))]
-    public decimal? ChangeInOperatingLiabilities { get; set; }
+    [JsonConverter(typeof(NoneSafeDoubleConverter))]
+    public double? ChangeInOperatingLiabilities { get; set; }
 
     [JsonPropertyName("changeInReceivables")]
-    [JsonConverter(typeof(NoneHandlingDecimalConverter))]
-    public decimal? ChangeInReceivables { get; set; }
+    [JsonConverter(typeof(NoneSafeDoubleConverter))]
+    public double? ChangeInReceivables { get; set; }
 
     [JsonPropertyName("depreciationDepletionAndAmortization")]
-    [JsonConverter(typeof(NoneHandlingDecimalConverter))]
-    public decimal? DepreciationDepletionAndAmortization { get; set; }
+    [JsonConverter(typeof(NoneSafeDoubleConverter))]
+    public double? DepreciationDepletionAndAmortization { get; set; }
 
     [JsonPropertyName("dividendPayout")]
-    [JsonConverter(typeof(NoneHandlingDecimalConverter))]
-    public decimal? DividendPayout { get; set; }
+    [JsonConverter(typeof(NoneSafeDoubleConverter))]
+    public double? DividendPayout { get; set; }
 
     [JsonPropertyName("dividendPayoutCommonStock")]
-    [JsonConverter(typeof(NoneHandlingDecimalConverter))]
-    public decimal? DividendPayoutCommonStock { get; set; }
+    [JsonConverter(typeof(NoneSafeDoubleConverter))]
+    public double? DividendPayoutCommonStock { get; set; }
 
     [JsonPropertyName("dividendPayoutPreferredStock")]
-    [JsonConverter(typeof(NoneHandlingDecimalConverter))]
-    public decimal? DividendPayoutPreferredStock { get; set; }
+    [JsonConverter(typeof(NoneSafeDoubleConverter))]
+    public double? DividendPayoutPreferredStock { get; set; }
 
     [JsonPropertyName("fiscalDateEnding")]
     public DateOnly FiscalDateEnding { get; set; }
 
     [JsonPropertyName("netIncome")]
-    [JsonConverter(typeof(NoneHandlingDecimalConverter))]
-    public decimal? NetIncome { get; set; }
+    [JsonConverter(typeof(NoneSafeDoubleConverter))]
+    public double? NetIncome { get; set; }
 
     [JsonPropertyName("operatingCashflow")]
-    [JsonConverter(typeof(NoneHandlingDecimalConverter))]
-    public decimal? OperatingCashflow { get; set; }
+    [JsonConverter(typeof(NoneSafeDoubleConverter))]
+    public double? OperatingCashflow { get; set; }
 
     [JsonPropertyName("paymentsForOperatingActivities")]
-    [JsonConverter(typeof(NoneHandlingDecimalConverter))]
-    public decimal? PaymentsForOperatingActivities { get; set; }
+    [JsonConverter(typeof(NoneSafeDoubleConverter))]
+    public double? PaymentsForOperatingActivities { get; set; }
 
     [JsonPropertyName("paymentsForRepurchaseOfCommonStock")]
-    [JsonConverter(typeof(NoneHandlingDecimalConverter))]
-    public decimal? PaymentsForRepurchaseOfCommonStock { get; set; }
+    [JsonConverter(typeof(NoneSafeDoubleConverter))]
+    public double? PaymentsForRepurchaseOfCommonStock { get; set; }
 
     [JsonPropertyName("paymentsForRepurchaseOfEquity")]
-    [JsonConverter(typeof(NoneHandlingDecimalConverter))]
-    public decimal? PaymentsForRepurchaseOfEquity { get; set; }
+    [JsonConverter(typeof(NoneSafeDoubleConverter))]
+    public double? PaymentsForRepurchaseOfEquity { get; set; }
 
     [JsonPropertyName("paymentsForRepurchaseOfPreferredStock")]
-    [JsonConverter(typeof(NoneHandlingDecimalConverter))]
-    public decimal? PaymentsForRepurchaseOfPreferredStock { get; set; }
+    [JsonConverter(typeof(NoneSafeDoubleConverter))]
+    public double? PaymentsForRepurchaseOfPreferredStock { get; set; }
 
     [JsonPropertyName("proceedsFromIssuanceOfCommonStock")]
-    [JsonConverter(typeof(NoneHandlingDecimalConverter))]
-    public decimal? ProceedsFromIssuanceOfCommonStock { get; set; }
+    [JsonConverter(typeof(NoneSafeDoubleConverter))]
+    public double? ProceedsFromIssuanceOfCommonStock { get; set; }
 
     [JsonPropertyName("proceedsFromIssuanceOfLongTermDebtAndCapitalSecuritiesNet")]
-    [JsonConverter(typeof(NoneHandlingDecimalConverter))]
-    public decimal? ProceedsFromIssuanceOfLongTermDebtAndCapitalSecuritiesNet { get; set; }
+    [JsonConverter(typeof(NoneSafeDoubleConverter))]
+    public double? ProceedsFromIssuanceOfLongTermDebtAndCapitalSecuritiesNet { get; set; }
 
     [JsonPropertyName("proceedsFromIssuanceOfPreferredStock")]
-    [JsonConverter(typeof(NoneHandlingDecimalConverter))]
-    public decimal? ProceedsFromIssuanceOfPreferredStock { get; set; }
+    [JsonConverter(typeof(NoneSafeDoubleConverter))]
+    public double? ProceedsFromIssuanceOfPreferredStock { get; set; }
 
     [JsonPropertyName("proceedsFromOperatingActivities")]
-    [JsonConverter(typeof(NoneHandlingDecimalConverter))]
-    public decimal? ProceedsFromOperatingActivities { get; set; }
+    [JsonConverter(typeof(NoneSafeDoubleConverter))]
+    public double? ProceedsFromOperatingActivities { get; set; }
 
     [JsonPropertyName("proceedsFromRepaymentsOfShortTermDebt")]
-    [JsonConverter(typeof(NoneHandlingDecimalConverter))]
-    public decimal? ProceedsFromRepaymentsOfShortTermDebt { get; set; }
+    [JsonConverter(typeof(NoneSafeDoubleConverter))]
+    public double? ProceedsFromRepaymentsOfShortTermDebt { get; set; }
 
     [JsonPropertyName("proceedsFromRepurchaseOfEquity")]
-    [JsonConverter(typeof(NoneHandlingDecimalConverter))]
-    public decimal? ProceedsFromRepurchaseOfEquity { get; set; }
+    [JsonConverter(typeof(NoneSafeDoubleConverter))]
+    public double? ProceedsFromRepurchaseOfEquity { get; set; }
 
     [JsonPropertyName("proceedsFromSaleOfTreasuryStock")]
-    [JsonConverter(typeof(NoneHandlingDecimalConverter))]
-    public decimal? ProceedsFromSaleOfTreasuryStock { get; set; }
+    [JsonConverter(typeof(NoneSafeDoubleConverter))]
+    public double? ProceedsFromSaleOfTreasuryStock { get; set; }
 
     [JsonPropertyName("profitLoss")]
-    [JsonConverter(typeof(NoneHandlingDecimalConverter))]
-    public decimal? ProfitLoss { get; set; }
+    [JsonConverter(typeof(NoneSafeDoubleConverter))]
+    public double? ProfitLoss { get; set; }
 
     [JsonPropertyName("reportedCurrency")]
     public string? ReportedCurrency { get; set; }
 
     [JsonPropertyName("stockBasedCompensation")]
-    [JsonConverter(typeof(NoneHandlingDecimalConverter))]
-    public decimal? StockBasedCompensation { get; set; }
+    [JsonConverter(typeof(NoneSafeDoubleConverter))]
+    public double? StockBasedCompensation { get; set; }
 }

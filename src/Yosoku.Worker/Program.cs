@@ -1,13 +1,26 @@
 using Yosoku.AlphaVantage.Extensions;
 using Yosoku.Worker;
 using Yosoku.Worker.Configuration;
+using Yosoku.Worker.Extensions;
 
-var builder = Host.CreateApplicationBuilder(args);
-var optionsConfigurationSection = builder.Configuration.GetSection("Settings");
-var options = new Settings();
-optionsConfigurationSection.Bind(options);
-builder.Services.Configure<Settings>(optionsConfigurationSection);
-builder.Services.AddHostedService<Worker>();
-builder.Services.AddAlphaVantageClient(options.ApiKey);
-var host = builder.Build();
-host.Run();
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        var builder = Host.CreateApplicationBuilder(args);
+        var connectionString = builder.Configuration.GetConnectionString("CacheConnection");
+        var settings = builder
+            .AddSqlServer()
+            .AddSettings<Settings>();
+        builder.Services.AddHostedService<Worker>();
+        builder.Services.AddAlphaVantageClient(settings.ApiKey)
+            .AddDistributedSqlServerCache(options =>
+            {
+                options.ConnectionString = connectionString;
+                options.SchemaName = "dbo";
+                options.TableName = "DistributedCache";
+            });
+        var host = builder.Build();
+        host.Run();
+    }
+}

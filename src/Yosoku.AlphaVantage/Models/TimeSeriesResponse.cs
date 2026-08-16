@@ -1,19 +1,22 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Text.Json.Serialization;
+using Yosoku.AlphaVantage.JsonConverters;
 
 namespace Yosoku.AlphaVantage.Models;
 
-[DataContract]
 public class TimeSeriesResponse
 {
-    [DataMember(Name = "Meta Data")]
+    [JsonPropertyName("Meta Data")]
     public required MetaData MetaData { get; set; }
 
-    [DataMember(Name = "Time Series (Daily)")]
-    public Dictionary<DateTime, TimeSeries>? DailyTimeSeries { get; set; }
+    [JsonPropertyName("Time Series (Daily)")]
+    [JsonConverter(typeof(DateOnlyDictionaryConverter))]
+    public Dictionary<DateOnly, TimeSeries>? DailyTimeSeries { get; set; }
 
-    [DataMember(Name = "Weekly Adjusted Time Series")]
-    public Dictionary<DateTime, TimeSeries>? WeeklyTimeSeries { get; set; }
+    [JsonPropertyName("Weekly Adjusted Time Series")]
+    [JsonConverter(typeof(DateOnlyDictionaryConverter))]
+    public Dictionary<DateOnly, TimeSeries>? WeeklyTimeSeries { get; set; }
 
-    [DataMember(Name = "Monthly Adjusted Time Series")]
-    public Dictionary<DateTime, TimeSeries>? MonthlyTimeSeries { get; set; }
+    [JsonPropertyName("Monthly Adjusted Time Series")]
+    [JsonConverter(typeof(DateOnlyDictionaryConverter))]
+    public Dictionary<DateOnly, TimeSeries>? MonthlyTimeSeries { get; set; }
 }
