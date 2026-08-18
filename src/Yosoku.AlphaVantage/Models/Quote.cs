@@ -2,23 +2,23 @@
 
 namespace Yosoku.AlphaVantage.Models;
 
-public class TimeSeries
+public class Quote
 {
     [JsonPropertyName("1. open")]
-    public double Open { get; set; }
+    public float Open { get; set; }
 
     [JsonPropertyName("2. high")]
-    public double High { get; set; }
+    public float High { get; set; }
 
     [JsonPropertyName("3. low")]
-    public double Low { get; set; }
+    public float Low { get; set; }
 
     [JsonPropertyName("4. close")]
-    public double Close { get; set; }
+    public float Close { get; set; }
 
     [JsonPropertyName("5. adjusted close")]
-    public double AdjustedClose { get; set; }
+    public float AdjustedClose { get; set; }
 
     [JsonPropertyName("6. volume")]
-    public double Volume { get; set; }
+    public float Volume { get; set; }
 }

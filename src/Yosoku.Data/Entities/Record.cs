@@ -3,17 +3,17 @@
 public class Record(
     string ticker, 
     DateOnly date, 
-    double score, 
-    double rsi,
-    double peRatio,
-    double sma50,
-    double sma200)
+    float score, 
+    float rsi,
+    float peRatio,
+    float sma50,
+    float sma200)
 {
     public string Ticker { get; private set; } = ticker;
     public DateOnly Date { get; private set; } = date;
-    public double Score { get; set; } = score;
-    public double Rsi { get; set; } = rsi;
-    public double PeRatio { get; set; } = peRatio;
-    public double Sma50 { get; set; } = sma50;
-    public double Sma200 { get; set; } = sma200;
+    public float Score { get; set; } = score;
+    public float Rsi { get; set; } = rsi;
+    public float PeRatio { get; set; } = peRatio;
+    public float Sma50 { get; set; } = sma50;
+    public float Sma200 { get; set; } = sma200;
 }

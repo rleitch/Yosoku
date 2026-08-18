@@ -17,7 +17,7 @@ public static class ServiceCollectionExtensions
 
         services.TryAddSingleton(sp => new ApiKeyHandler(apiKey));
 
-        services.AddHttpClient<AlphaVantageClient>(client =>
+        services.AddHttpClient<IAlphaVantageClient, AlphaVantageClient>(client =>
         {
             client.BaseAddress = new Uri("https://www.alphavantage.co/");
         }).AddHttpMessageHandler<ApiKeyHandler>();

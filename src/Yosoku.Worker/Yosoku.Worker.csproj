@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Yosoku.AlphaVantage\Yosoku.AlphaVantage.csproj" />
+    <ProjectReference Include="..\Yosoku.Core\Yosoku.Core.csproj" />
     <ProjectReference Include="..\Yosoku.Data\Yosoku.Data.csproj" />
   </ItemGroup>
 </Project>

@@ -428,5 +428,5 @@ FodyWeavers.xsd
 *.msm
 *.msp
 
-appsettings.local.json
+appsettings.Development.json
 *DesignTimeDbContextFactory.cs

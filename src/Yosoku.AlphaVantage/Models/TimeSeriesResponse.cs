@@ -10,13 +10,13 @@ public class TimeSeriesResponse
 
     [JsonPropertyName("Time Series (Daily)")]
     [JsonConverter(typeof(DateOnlyDictionaryConverter))]
-    public Dictionary<DateOnly, TimeSeries>? DailyTimeSeries { get; set; }
+    public Dictionary<DateOnly, Quote>? DailyTimeSeries { get; set; }
 
     [JsonPropertyName("Weekly Adjusted Time Series")]
     [JsonConverter(typeof(DateOnlyDictionaryConverter))]
-    public Dictionary<DateOnly, TimeSeries>? WeeklyTimeSeries { get; set; }
+    public Dictionary<DateOnly, Quote>? WeeklyTimeSeries { get; set; }
 
     [JsonPropertyName("Monthly Adjusted Time Series")]
     [JsonConverter(typeof(DateOnlyDictionaryConverter))]
-    public Dictionary<DateOnly, TimeSeries>? MonthlyTimeSeries { get; set; }
+    public Dictionary<DateOnly, Quote>? MonthlyTimeSeries { get; set; }
 }

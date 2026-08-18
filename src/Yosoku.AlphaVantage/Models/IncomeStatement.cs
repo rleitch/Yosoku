@@ -7,106 +7,82 @@ public class IncomeStatement
 {
     // Core Income Metrics
     [JsonPropertyName("comprehensiveIncomeNetOfTax")]
-    [JsonConverter(typeof(NoneSafeDoubleConverter))]
-    public double? ComprehensiveIncomeNetOfTax { get; set; }
+    public float? ComprehensiveIncomeNetOfTax { get; set; }
 
     [JsonPropertyName("costofGoodsAndServicesSold")]
-    [JsonConverter(typeof(NoneSafeDoubleConverter))]
-    public double? CostOfGoodsAndServicesSold { get; set; }
+    public float? CostOfGoodsAndServicesSold { get; set; }
 
     [JsonPropertyName("costOfRevenue")]
-    [JsonConverter(typeof(NoneSafeDoubleConverter))]
-    public double? CostOfRevenue { get; set; }
+    public float? CostOfRevenue { get; set; }
 
     [JsonPropertyName("depreciation")]
-    [JsonConverter(typeof(NoneSafeDoubleConverter))]
-    public double? Depreciation { get; set; }
+    public float? Depreciation { get; set; }
 
     [JsonPropertyName("depreciationAndAmortization")]
-    [JsonConverter(typeof(NoneSafeDoubleConverter))]
-    public double? DepreciationAndAmortization { get; set; }
+    public float? DepreciationAndAmortization { get; set; }
 
     [JsonPropertyName("ebit")]
-    [JsonConverter(typeof(NoneSafeDoubleConverter))]
-    public double? Ebit { get; set; }
+    public float? Ebit { get; set; }
 
     [JsonPropertyName("ebitda")]
-    [JsonConverter(typeof(NoneSafeDoubleConverter))]
-    public double? Ebitda { get; set; }
+    public float? Ebitda { get; set; }
 
     // Date field, no converter needed.
     [JsonPropertyName("fiscalDateEnding")]
     public DateOnly FiscalDateEnding { get; set; }
 
     [JsonPropertyName("grossProfit")]
-    [JsonConverter(typeof(NoneSafeDoubleConverter))]
-    public double? GrossProfit { get; set; }
+    public float? GrossProfit { get; set; }
 
     [JsonPropertyName("incomeBeforeTax")]
-    [JsonConverter(typeof(NoneSafeDoubleConverter))]
-    public double? IncomeBeforeTax { get; set; }
+    public float? IncomeBeforeTax { get; set; }
 
     [JsonPropertyName("incomeTaxExpense")]
-    [JsonConverter(typeof(NoneSafeDoubleConverter))]
-    public double? IncomeTaxExpense { get; set; }
+    public float? IncomeTaxExpense { get; set; }
 
     [JsonPropertyName("interestAndDebtExpense")]
-    [JsonConverter(typeof(NoneSafeDoubleConverter))]
-    public double? InterestAndDebtExpense { get; set; }
+    public float? InterestAndDebtExpense { get; set; }
 
     [JsonPropertyName("interestExpense")]
-    [JsonConverter(typeof(NoneSafeDoubleConverter))]
-    public double? InterestExpense { get; set; }
+    public float? InterestExpense { get; set; }
 
     [JsonPropertyName("interestIncome")]
-    [JsonConverter(typeof(NoneSafeDoubleConverter))]
-    public double? InterestIncome { get; set; }
+    public float? InterestIncome { get; set; }
 
     [JsonPropertyName("investmentIncomeNet")]
-    [JsonConverter(typeof(NoneSafeDoubleConverter))]
-    public double? InvestmentIncomeNet { get; set; }
+    public float? InvestmentIncomeNet { get; set; }
 
     [JsonPropertyName("netIncome")]
-    [JsonConverter(typeof(NoneSafeDoubleConverter))]
-    public double? NetIncome { get; set; }
+    public float? NetIncome { get; set; }
 
     [JsonPropertyName("netIncomeFromContinuingOperations")]
-    [JsonConverter(typeof(NoneSafeDoubleConverter))]
-    public double? NetIncomeFromContinuingOperations { get; set; }
+    public float? NetIncomeFromContinuingOperations { get; set; }
 
     [JsonPropertyName("netInterestIncome")]
-    [JsonConverter(typeof(NoneSafeDoubleConverter))]
-    public double? NetInterestIncome { get; set; }
+    public float? NetInterestIncome { get; set; }
 
     [JsonPropertyName("nonInterestIncome")]
-    [JsonConverter(typeof(NoneSafeDoubleConverter))]
-    public double? NonInterestIncome { get; set; }
+    public float? NonInterestIncome { get; set; }
 
     [JsonPropertyName("operatingExpenses")]
-    [JsonConverter(typeof(NoneSafeDoubleConverter))]
-    public double? OperatingExpenses { get; set; }
+    public float? OperatingExpenses { get; set; }
 
     [JsonPropertyName("operatingIncome")]
-    [JsonConverter(typeof(NoneSafeDoubleConverter))]
-    public double? OperatingIncome { get; set; }
+    public float? OperatingIncome { get; set; }
 
     [JsonPropertyName("otherNonOperatingIncome")]
-    [JsonConverter(typeof(NoneSafeDoubleConverter))]
-    public double? OtherNonOperatingIncome { get; set; }
+    public float? OtherNonOperatingIncome { get; set; }
 
     // Currency string, no converter needed.
     [JsonPropertyName("reportedCurrency")]
-    public string ReportedCurrency { get; set; }
+    public required string ReportedCurrency { get; set; }
 
     [JsonPropertyName("researchAndDevelopment")]
-    [JsonConverter(typeof(NoneSafeDoubleConverter))]
-    public double? ResearchAndDevelopment { get; set; }
+    public float? ResearchAndDevelopment { get; set; }
 
     [JsonPropertyName("sellingGeneralAndAdministrative")]
-    [JsonConverter(typeof(NoneSafeDoubleConverter))]
-    public double? SellingGeneralAndAdministrative { get; set; }
+    public float? SellingGeneralAndAdministrative { get; set; }
 
     [JsonPropertyName("totalRevenue")]
-    [JsonConverter(typeof(NoneSafeDoubleConverter))]
-    public double? TotalRevenue { get; set; }
+    public float? TotalRevenue { get; set; }
 }

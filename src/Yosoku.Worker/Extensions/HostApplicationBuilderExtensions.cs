@@ -1,7 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Yosoku.Data;
-
-namespace Yosoku.Worker.Extensions;
+﻿namespace Yosoku.Worker.Extensions;
 
 public static class HostApplicationBuilderExtensions
 {
@@ -13,22 +10,5 @@ public static class HostApplicationBuilderExtensions
         section.Bind(settings);
         builder.Services.Configure<T>(section);
         return settings;
-    }
-
-    public static HostApplicationBuilder AddSqlServer(this HostApplicationBuilder builder)
-    {
-        var connectionString =
-            builder.Configuration.GetConnectionString("DefaultConnection")
-                ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-
-        builder.Services.AddDbContextFactory<YosokuContext>(options =>
-        {
-            options.UseSqlServer(
-                connectionString,
-                sqlOptions => sqlOptions.EnableRetryOnFailure(3, TimeSpan.FromSeconds(10), null)
-            );
-        });
-
-        return builder;
     }
 }

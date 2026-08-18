@@ -1,18 +1,21 @@
 ﻿using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.Extensions.Logging;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using Yosoku.AlphaVantage.Models;
+using Yosoku.Core.Extensions;
 
 namespace Yosoku.AlphaVantage;
 
-public class AlphaVantageClient(HttpClient httpClient, IDistributedCache cache)
+public class AlphaVantageClient(
+    HttpClient httpClient,
+    IDistributedCache cache,
+    ILogger<AlphaVantageClient> logger,
+    JsonSerializerOptions jsonOptions) 
+    : IAlphaVantageClient
 {
-    private DateTimeOffset _lastCalled = DateTimeOffset.MinValue;
+    private readonly SemaphoreSlim _throttleSemaphore = new(1, 1);
 
-    private static readonly JsonSerializerOptions _jsonOptions = new()
-    {
-        NumberHandling = JsonNumberHandling.AllowReadingFromString
-    };
+    private DateTimeOffset _lastCalled = DateTimeOffset.MinValue;
 
     public async Task<TimeSeriesResponse> TimeSeriesDailyAsync(string symbol, CancellationToken token = default)
     {
@@ -65,35 +68,45 @@ public class AlphaVantageClient(HttpClient httpClient, IDistributedCache cache)
 
     private async Task<T> ThrottleAndGetFromJsonAsync<T>(string functionName, string symbol, CancellationToken token = default)
     {
+        var cacheKey = $"v1:{functionName}:{symbol.ToUpper()}";
         var url = $"query?function={functionName}&symbol={symbol.ToUpper()}&outputsize=full";
+        //var url = $"query?function={functionName}&symbol={symbol.ToUpper()}";
 
-        var response = await cache.GetStringAsync(url, token);
+        var response = await cache.GetStringAsync(cacheKey, token);
         if (response == null)
         {
             await Wait();
             response = await httpClient.GetStringAsync(url, token);
-            await cache.SetStringAsync(url, response, new DistributedCacheEntryOptions
+            await cache.SetStringAsync(cacheKey, response, new DistributedCacheEntryOptions
             {
-                AbsoluteExpiration = new DateTimeOffset(2026, 8, 17, 18, 0, 0, 0, TimeSpan.Zero)
+                AbsoluteExpiration = DateTimeOffset.UtcNow.ToNextSixPm()
             }, token);
         }
 
-        return JsonSerializer.Deserialize<T>(response, _jsonOptions)
-            ?? throw new Exception($"Failed to deserialize cached response from {url}. Result was null.");
+        return JsonSerializer.Deserialize<T>(response, jsonOptions)
+            ?? throw new Exception($"Failed to deserialize cached response from {cacheKey}. Result was null.");
     }
 
-    private async Task Wait(int rpm = 74)
+    private async Task Wait(float rpm = 74.9F)
     {
-        var interval = (60.0 / rpm) * 1000;
-        var diff = DateTimeOffset.Now - _lastCalled;
-        if (diff.TotalMilliseconds < interval)
+        await _throttleSemaphore.WaitAsync();
+        try
         {
-            // wait
-            var delay = interval - diff.TotalMilliseconds;
-            Console.WriteLine($"Delaying {delay} ms");
-            await Task.Delay((int)Math.Ceiling(delay));
+            var interval = (60 / rpm) * 1000;
+            var diff = DateTimeOffset.Now - _lastCalled;
 
+            if (diff.TotalMilliseconds < interval)
+            {
+                var delay = interval - diff.TotalMilliseconds;
+                logger.LogInformation($"Delaying {delay} ms to respect API rate limit of {rpm} requests per minute.");
+                await Task.Delay((int)Math.Ceiling(delay));
+            }
+
+            _lastCalled = DateTimeOffset.Now;
         }
-        _lastCalled = DateTimeOffset.Now;
+        finally
+        {
+            _throttleSemaphore.Release();
+        }
     }
 }
