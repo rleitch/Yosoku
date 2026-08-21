@@ -3,11 +3,11 @@ using System.Text.Json.Serialization;
 using Yosoku.AlphaVantage.Extensions;
 using Yosoku.AlphaVantage.JsonConverterFactories;
 using Yosoku.AlphaVantage.JsonConverters;
-using Yosoku.AlphaVantage.Services;
 using Yosoku.Data.Extensions;
 using Yosoku.Worker;
 using Yosoku.Worker.Configuration;
 using Yosoku.Worker.Extensions;
+using Yosoku.Worker.Interfaces;
 
 internal class Program
 {
@@ -38,7 +38,7 @@ internal class Program
                 };
                 return options;
             })
-            .AddSingleton<IMarketDataService, MarketDataService>();
+            .AddSingleton<IMultiFactorScorer, MultiFactorScorer>();
 
         var host = builder.Build();
         host.Run();

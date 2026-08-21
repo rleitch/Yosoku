@@ -17,7 +17,7 @@ namespace Yosoku.Data.Migrations
                 {
                     Ticker = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     Date = table.Column<DateOnly>(type: "date", nullable: false),
-                    Score = table.Column<double>(type: "float", nullable: false)
+                    Score = table.Column<float>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {

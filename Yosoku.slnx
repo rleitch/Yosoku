@@ -3,14 +3,8 @@
     <Project Path="src/Yosoku.AlphaVantage/Yosoku.AlphaVantage.csproj" />
     <Project Path="src/Yosoku.Core/Yosoku.Core.csproj" Id="e16f50ba-730a-464b-9477-aa5b91bb6cf6" />
     <Project Path="src/Yosoku.Data/Yosoku.Data.csproj" Id="2a4435ce-ab88-4f75-823e-22f5bd15aec3" />
-    <Project Path="src/Yosoku.Models/Yosoku.Models.csproj" Id="95b8d9c2-7596-4ba3-9d60-ba2239c7c3bd" />
-    <Project Path="src/Yosoku.Services/Yosoku.Services.csproj" Id="81f53fb6-3c38-4062-b83a-7b9ead50761c" />
     <Project Path="src/Yosoku.Trainer/Yosoku.Trainer.csproj" Id="65b643cd-5f31-4df2-97fc-a88b841fc833" />
     <Project Path="src/Yosoku.Worker/Yosoku.Worker.csproj" />
   </Folder>
-  <Folder Name="/tests/">
-    <Project Path="tests/Yosoku.AlphaVantage.Tests/Yosoku.AlphaVantage.Tests.csproj" Id="e20a2f0a-706e-4d56-a51e-9278107398f8" />
-    <Project Path="tests/Yosoku.Core.Tests/Yosoku.Core.Tests.csproj" Id="d872be02-0439-411b-a076-a07c86b4e0bd" />
-    <Project Path="tests/Yosoku.Worker.Tests/Yosoku.Worker.Tests.csproj" Id="1e1c5c97-4340-44c8-8494-696135453b6d" />
-  </Folder>
+  <Folder Name="/tests/" />
 </Solution>

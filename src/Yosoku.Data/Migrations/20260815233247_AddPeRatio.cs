@@ -10,7 +10,7 @@ namespace Yosoku.Data.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<double>(
+            migrationBuilder.AddColumn<float>(
                 name: "PeRatio",
                 table: "Records",
                 type: "float",

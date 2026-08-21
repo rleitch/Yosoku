@@ -12,8 +12,8 @@ using Yosoku.Data;
 namespace Yosoku.Data.Migrations
 {
     [DbContext(typeof(YosokuContext))]
-    [Migration("20260815233247_AddPeRatio")]
-    partial class AddPeRatio
+    [Migration("20260816161418_DoubleToFloat")]
+    partial class DoubleToFloat
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,14 +34,20 @@ namespace Yosoku.Data.Migrations
                     b.Property<DateOnly>("Date")
                         .HasColumnType("date");
 
-                    b.Property<float?>("PeRatio")
-                        .HasColumnType("float");
+                    b.Property<float>("PeRatio")
+                        .HasColumnType("real");
 
                     b.Property<float>("Rsi")
-                        .HasColumnType("float");
+                        .HasColumnType("real");
 
                     b.Property<float>("Score")
-                        .HasColumnType("float");
+                        .HasColumnType("real");
+
+                    b.Property<float>("Sma200")
+                        .HasColumnType("real");
+
+                    b.Property<float>("Sma50")
+                        .HasColumnType("real");
 
                     b.HasKey("Ticker", "Date");
 

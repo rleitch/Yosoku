@@ -1,0 +1,169 @@
+## MidCap Alpha Scoring System (MASS) — Methodology
+
+This system synthesizes **five factor pillars** into a single composite score per constituent, ranked 1–N across the Russell MidCap universe. Each pillar is built exclusively from the API fields provided, supplemented by price-derived signals.
+
+---
+
+## Pillar Architecture Overview
+
+| Pillar | Weight | Rationale | Rebalance Sensitivity |
+|---|---|---|---|
+| **Quality** | 30% | Most predictive of long-run compounding; rewards durable moats | Low — quarterly |
+| **Value** | 20% | Anchors entry price discipline; prevents overpaying for growth | Medium — quarterly |
+| **Growth** | 20% | Captures earnings power trajectory; penalizes deceleration | Medium — quarterly |
+| **Capital Efficiency** | 20% | Separates value creators from destroyers; strongest 10-yr alpha driver | Low — quarterly |
+| **Momentum** | 10% | Short-term price confirmation; reduces "value trap" exposure | High — monthly |
+
+---
+
+## Pillar 1 — Quality (30%)
+
+Quality identifies businesses with **structurally high, stable earnings and conservative balance sheets.** It is the single most important pillar for a 10+ year horizon.
+
+### Sub-factors and Formulas
+
+| Sub-Factor | Formula | Source Fields | Direction |
+|---|---|---|---|
+| **Gross Margin** | `GrossProfit / TotalRevenue` | IS | ↑ Higher = better |
+| **EBITDA Margin** | `Ebitda / TotalRevenue` | IS | ↑ |
+| **FCF Margin** | `(OperatingCashflow − CapitalExpenditures) / TotalRevenue` | CF, IS | ↑ |
+| **Accruals Ratio** | `(NetIncome − OperatingCashflow) / TotalAssets` | IS, CF, BS | ↓ Lower = better (earnings quality) |
+| **Altman Z″ (private)** | `6.56×(WC/TA) + 3.26×(RE/TA) + 6.72×(EBIT/TA) + 1.05×(BV Equity/TL)` | BS, IS | ↑ |
+| **Interest Coverage** | `Ebit / InterestAndDebtExpense` | IS | ↑ |
+| **Debt/Equity** | `(LongTermDebt + ShortTermDebt) / TotalShareholderEquity` | BS | ↓ |
+| **Gross Margin Stability** | Rolling 8-quarter σ of Gross Margin | IS | ↓ |
+
+**Quality Score = equal-weight average of z-scored sub-factors (directionally adjusted).**
+
+---
+
+## Pillar 2 — Value (20%)
+
+Value is computed as a **multi-metric composite** to avoid single-ratio distortion (e.g., P/E is meaningless for cyclicals at trough earnings).
+
+### Sub-factors and Formulas
+
+| Sub-Factor | Formula | Source Fields | Direction |
+|---|---|---|---|
+| **EV/EBITDA** | `MarketCap + LongTermDebt + ShortTermDebt − Cash) / Ebitda` | BS, IS | ↓ |
+| **Price/FCF** | `MarketCap / (OperatingCashflow − CapitalExpenditures)` | Price, CF | ↓ |
+| **Price/Sales** | `MarketCap / TotalRevenue` | Price, IS | ↓ |
+| **Price/Book** | `MarketCap / TotalShareholderEquity` | Price, BS | ↓ |
+| **Earnings Yield** | `NetIncome / MarketCap` | IS, Price | ↑ |
+
+> **Note:** MarketCap = `CommonStockSharesOutstanding × AdjustedClosePrice` (daily feed).
+
+**Value Score = equal-weight average of z-scored sub-factors.** Winsorize at 2.5th/97.5th percentile before z-scoring to suppress outlier distortion from deeply negative earnings periods.
+
+---
+
+## Pillar 3 — Growth (20%)
+
+Growth measures **trajectory and sustainability** of revenue and earnings, not just magnitude.
+
+### Sub-factors and Formulas
+
+| Sub-Factor | Formula | Direction |
+|---|---|---|
+| **Revenue Growth (YoY)** | `(TotalRevenue_t − TotalRevenue_t-4) / |TotalRevenue_t-4|` (quarterly) | ↑ |
+| **EPS Growth (YoY)** | `(NetIncome_t − NetIncome_t-4) / |NetIncome_t-4|` | ↑ |
+| **FCF Growth (YoY)** | `(FCF_t − FCF_t-4) / |FCF_t-4|` | ↑ |
+| **R&D Intensity** | `ResearchAndDevelopment / TotalRevenue` (for tech/healthcare sectors) | ↑ |
+| **Revenue Acceleration** | `RevenueGrowth_t − RevenueGrowth_t-4` (second derivative) | ↑ |
+| **SGA Efficiency** | `GrossProfit / SellingGeneralAndAdministrative` | ↑ (operating leverage) |
+
+**Growth Score = equal-weight average of z-scored sub-factors.** Cap individual sub-factor z-scores at ±3 to avoid hyper-growth outliers dominating the composite.
+
+---
+
+## Pillar 4 — Capital Efficiency (20%)
+
+This is the **highest alpha pillar over 10+ years** because it directly measures management's ability to compound shareholder capital.
+
+### Sub-factors and Formulas
+
+| Sub-Factor | Formula | Source Fields | Direction |
+|---|---|---|---|
+| **ROIC** | `OperatingIncome×(1−EffectiveTaxRate) / (TotalAssets − CurrentLiabilities − ExcessCash)` | IS, BS | ↑ |
+| **ROE** | `NetIncome / TotalShareholderEquity` | IS, BS | ↑ |
+| **Asset Turnover** | `TotalRevenue / TotalAssets` | IS, BS | ↑ |
+| **CapEx Intensity** | `CapitalExpenditures / OperatingCashflow` | CF | ↓ (lower reinvestment need = moat) |
+| **SBC Dilution** | `StockBasedCompensation / NetIncome` | CF, IS | ↓ (penalizes shareholder dilution) |
+| **Buyback Yield** | `PaymentsForRepurchaseOfCommonStock / MarketCap` | CF, Price | ↑ |
+| **Retained Earnings Growth** | `(RetainedEarnings_t − RetainedEarnings_t-4) / TotalAssets_t-4` | BS | ↑ |
+
+**Capital Efficiency Score = equal-weight average of z-scored sub-factors.**
+
+---
+
+## Pillar 5 — Momentum (10%)
+
+Momentum serves as a **confirmation signal and value-trap filter.** A fundamentally excellent company with falling price is often falling for a reason not yet visible in the financials.
+
+### Sub-factors and Formulas
+
+| Sub-Factor | Formula | Lookback | Direction |
+|---|---|---|---|
+| **Price Momentum** | Total return, skip last month | 12M − 1M | ↑ |
+| **52-Week High Proximity** | `AdjClose / 52W_High` | Daily | ↑ |
+| **Earnings Revision Proxy** | ΔNetIncome (most recent quarter vs. prior quarter, annualized) | Quarterly | ↑ |
+| **Price vs. 200-DMA** | `AdjClose / 200-Day Moving Average` | Daily | ↑ |
+| **Volume Trend** | 20-day avg volume / 60-day avg volume | Daily | ↑ (accumulation signal) |
+
+**Momentum Score = equal-weight average of z-scored sub-factors.** Momentum is rebalanced **monthly**, while Pillars 1–4 are rebalanced **quarterly** (on the 15th business day after earnings season end to avoid look-ahead bias).
+
+---
+
+## Composite Scoring and Ranking
+
+### Score Assembly
+
+```
+MASS_Score = 0.30×Quality + 0.20×Value + 0.20×Growth + 0.20×CapEfficiency + 0.10×Momentum
+```
+
+All pillar scores are **cross-sectionally z-scored within the Russell MidCap universe** before weighting. This ensures no single sector dominates due to absolute metric differences (e.g., financials vs. industrials have structurally different P/B ranges).
+
+### Sector Neutralization Option
+
+Apply **sector-relative z-scoring** within GICS Level 1 sectors before computing the composite. This produces a sector-neutral ranking suitable for concentrated bets on the best stock within each sector, rather than a sector-tilted portfolio.
+
+---
+
+## Model Calibration Approach
+
+| Step | Method | Detail |
+|---|---|---|
+| **Backtest Universe** | Survivorship-bias-free Russell MidCap history | Minimum 15 years of data; use point-in-time fundamentals |
+| **Factor Validation** | Information Coefficient (IC) analysis | Rank IC ≥ 0.04 monthly = statistically useful factor; cull those below threshold |
+| **Weight Optimization** | Bayesian shrinkage regression | Regress forward 1-yr and 3-yr returns on pillar scores; shrink weights toward equal-weight prior |
+| **Decay Testing** | Rolling 5-year walk-forward | Re-estimate weights every 5 years to detect factor crowding or regime shifts |
+| **Overfitting Guard** | Out-of-sample split (2000–2012 train / 2013–2026 test) | Never optimize on the full sample |
+| **Winsorization** | 2.5% / 97.5% per fundamental metric | Applied before z-scoring each cycle |
+| **Missing Data** | Median imputation within sector | Flag if >2 quarters missing; exclude from ranking if >4 |
+
+---
+
+## Rebalancing Cadence
+
+**Recommended: Quarterly, with monthly momentum refresh.**
+
+| Component | Cadence | Trigger |
+|---|---|---|
+| Pillars 1–4 (fundamentals) | Quarterly | 15 business days after quarter-end |
+| Pillar 5 (momentum) | Monthly | First trading day of each month |
+| Full index reconstitution | Annually | Aligned with Russell rebalance (last Friday of June) |
+| Emergency exit trigger | Any time | If MASS_Score drops below bottom 20th percentile AND price falls >20% from 52W high simultaneously |
+
+---
+
+## Portfolio Construction from Rankings
+
+Once constituents are ranked 1–N by MASS_Score, apply the following construction rules:
+
+- **Top decile (Top 10%):** Full overweight — equal-weight within this cohort as the core portfolio.
+- **Deciles 2–3:** Optional satellite positions for diversification.
+- **Bottom quartile:** Explicit exclusion list; avoid regardless of other signals.
+- **Minimum position count:** 30 stocks to ensure idiosyncratic risk diversification.
+
+---

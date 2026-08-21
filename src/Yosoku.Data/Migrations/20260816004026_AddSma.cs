@@ -10,24 +10,24 @@ namespace Yosoku.Data.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<double>(
+            migrationBuilder.AlterColumn<float>(
                 name: "PeRatio",
                 table: "Records",
                 type: "float",
                 nullable: false,
                 defaultValue: 0.0,
-                oldClrType: typeof(double),
+                oldClrType: typeof(float),
                 oldType: "float",
                 oldNullable: true);
 
-            migrationBuilder.AddColumn<double>(
+            migrationBuilder.AddColumn<float>(
                 name: "Sma200",
                 table: "Records",
                 type: "float",
                 nullable: false,
                 defaultValue: 0.0);
 
-            migrationBuilder.AddColumn<double>(
+            migrationBuilder.AddColumn<float>(
                 name: "Sma50",
                 table: "Records",
                 type: "float",
@@ -46,12 +46,12 @@ namespace Yosoku.Data.Migrations
                 name: "Sma50",
                 table: "Records");
 
-            migrationBuilder.AlterColumn<double>(
+            migrationBuilder.AlterColumn<float>(
                 name: "PeRatio",
                 table: "Records",
                 type: "float",
                 nullable: true,
-                oldClrType: typeof(double),
+                oldClrType: typeof(float),
                 oldType: "float");
         }
     }

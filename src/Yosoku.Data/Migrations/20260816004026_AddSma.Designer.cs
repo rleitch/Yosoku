@@ -34,19 +34,19 @@ namespace Yosoku.Data.Migrations
                     b.Property<DateOnly>("Date")
                         .HasColumnType("date");
 
-                    b.Property<double>("PeRatio")
+                    b.Property<float>("PeRatio")
                         .HasColumnType("float");
 
-                    b.Property<double>("Rsi")
+                    b.Property<float>("Rsi")
                         .HasColumnType("float");
 
-                    b.Property<double>("Score")
+                    b.Property<float>("Score")
                         .HasColumnType("float");
 
-                    b.Property<double>("Sma200")
+                    b.Property<float>("Sma200")
                         .HasColumnType("float");
 
-                    b.Property<double>("Sma50")
+                    b.Property<float>("Sma50")
                         .HasColumnType("float");
 
                     b.HasKey("Ticker", "Date");

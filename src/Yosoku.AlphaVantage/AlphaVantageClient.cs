@@ -66,28 +66,33 @@ public class AlphaVantageClient(
         return await ThrottleAndGetFromJsonAsync<EtfProfile>("ETF_PROFILE", symbol, token);
     }
 
-    private async Task<T> ThrottleAndGetFromJsonAsync<T>(string functionName, string symbol, CancellationToken token = default)
+    private async Task<T> ThrottleAndGetFromJsonAsync<T>(
+        string functionName, 
+        string symbol, 
+        CancellationToken token = default)
     {
         var cacheKey = $"v1:{functionName}:{symbol.ToUpper()}";
-        var url = $"query?function={functionName}&symbol={symbol.ToUpper()}&outputsize=full";
-        //var url = $"query?function={functionName}&symbol={symbol.ToUpper()}";
+        var url = $"query?function={functionName}&symbol={symbol.ToUpper()}";
 
         var response = await cache.GetStringAsync(cacheKey, token);
         if (response == null)
         {
             await Wait();
             response = await httpClient.GetStringAsync(url, token);
-            await cache.SetStringAsync(cacheKey, response, new DistributedCacheEntryOptions
+            if(!response.Contains("Invalid API call", StringComparison.InvariantCultureIgnoreCase))
             {
-                AbsoluteExpiration = DateTimeOffset.UtcNow.ToNextSixPm()
-            }, token);
+                await cache.SetStringAsync(cacheKey, response, new DistributedCacheEntryOptions
+                {
+                    AbsoluteExpiration = DateTimeOffset.UtcNow.ToNextSixPm()
+                }, token);
+            }
         }
 
         return JsonSerializer.Deserialize<T>(response, jsonOptions)
             ?? throw new Exception($"Failed to deserialize cached response from {cacheKey}. Result was null.");
     }
 
-    private async Task Wait(float rpm = 74.9F)
+    private async Task Wait(float rpm = 73F)
     {
         await _throttleSemaphore.WaitAsync();
         try

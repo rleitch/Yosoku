@@ -34,10 +34,10 @@ namespace Yosoku.Data.Migrations
                     b.Property<DateOnly>("Date")
                         .HasColumnType("date");
 
-                    b.Property<double>("Rsi")
+                    b.Property<float>("Rsi")
                         .HasColumnType("float");
 
-                    b.Property<double>("Score")
+                    b.Property<float>("Score")
                         .HasColumnType("float");
 
                     b.HasKey("Ticker", "Date");
