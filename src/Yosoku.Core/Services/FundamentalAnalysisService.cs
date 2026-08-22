@@ -2,11 +2,11 @@
 
 public static class FundamentalAnalysisService
 {
-    public static float CalculatePERatio(float currentPrice, float netIncome, float sharesOutstanding)
+    public static double CalculatePERatio(double currentPrice, double netIncome, double sharesOutstanding)
     {
         if (netIncome == 0f)
         {
-            return float.PositiveInfinity;
+            return double.PositiveInfinity;
         }
 
         if (sharesOutstanding == 0f)

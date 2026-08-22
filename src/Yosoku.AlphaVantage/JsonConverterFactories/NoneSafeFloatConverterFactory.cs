@@ -12,10 +12,10 @@ public class NoneSafeFloatConverterFactory(
     public override bool CanConvert(
         Type typeToConvert)
     {
-        return typeToConvert == typeof(float?);
+        return typeToConvert == typeof(double?);
     }
 
-    public override JsonConverter<float?> CreateConverter(
+    public override JsonConverter<double?> CreateConverter(
         Type typeToConvert, 
         JsonSerializerOptions options)
     {

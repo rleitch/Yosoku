@@ -5,116 +5,116 @@ namespace Yosoku.AlphaVantage.Models;
 public class BalanceSheet
 {
     [JsonPropertyName("accumulatedDepreciationAmortizationPPE")]
-    public float? AccumulatedDepreciationAmortizationPPE { get; set; }
+    public double? AccumulatedDepreciationAmortizationPPE { get; set; }
 
     [JsonPropertyName("capitalLeaseObligations")]
-    public float? CapitalLeaseObligations { get; set; }
+    public double? CapitalLeaseObligations { get; set; }
 
     [JsonPropertyName("cashAndCashEquivalentsAtCarryingValue")]
-    public float? CashAndCashEquivalentsAtCarryingValue { get; set; }
+    public double? CashAndCashEquivalentsAtCarryingValue { get; set; }
 
     [JsonPropertyName("cashAndShortTermInvestments")]
-    public float? CashAndShortTermInvestments { get; set; }
+    public double? CashAndShortTermInvestments { get; set; }
 
     [JsonPropertyName("commonStock")]
-    public float? CommonStock { get; set; }
+    public double? CommonStock { get; set; }
 
     [JsonPropertyName("commonStockSharesOutstanding")]
-    public float? CommonStockSharesOutstanding { get; set; }
+    public double? CommonStockSharesOutstanding { get; set; }
 
     [JsonPropertyName("currentAccountsPayable")]
-    public float? CurrentAccountsPayable { get; set; }
+    public double? CurrentAccountsPayable { get; set; }
 
     [JsonPropertyName("currentDebt")]
-    public float? CurrentDebt { get; set; }
+    public double? CurrentDebt { get; set; }
 
     [JsonPropertyName("currentLongTermDebt")]
-    public float? CurrentLongTermDebt { get; set; }
+    public double? CurrentLongTermDebt { get; set; }
 
     [JsonPropertyName("currentNetReceivables")]
-    public float? CurrentNetReceivables { get; set; }
+    public double? CurrentNetReceivables { get; set; }
 
     [JsonPropertyName("deferredRevenue")]
-    public float? DeferredRevenue { get; set; }
+    public double? DeferredRevenue { get; set; }
 
     [JsonPropertyName("fiscalDateEnding")]
     public DateOnly FiscalDateEnding { get; set; }
 
     [JsonPropertyName("goodwill")]
-    public float? Goodwill { get; set; }
+    public double? Goodwill { get; set; }
 
     [JsonPropertyName("intangibleAssets")]
-    public float? IntangibleAssets { get; set; }
+    public double? IntangibleAssets { get; set; }
 
     [JsonPropertyName("intangibleAssetsExcludingGoodwill")]
-    public float? IntangibleAssetsExcludingGoodwill { get; set; }
+    public double? IntangibleAssetsExcludingGoodwill { get; set; }
 
     [JsonPropertyName("inventory")]
-    public float? Inventory { get; set; }
+    public double? Inventory { get; set; }
 
     [JsonPropertyName("investments")]
-    public float? Investments { get; set; }
+    public double? Investments { get; set; }
 
     [JsonPropertyName("longTermDebt")]
-    public float? LongTermDebt { get; set; }
+    public double? LongTermDebt { get; set; }
 
     [JsonPropertyName("longTermDebtNoncurrent")]
-    public float? LongTermDebtNoncurrent { get; set; }
+    public double? LongTermDebtNoncurrent { get; set; }
 
     [JsonPropertyName("longTermInvestments")]
-    public float? LongTermInvestments { get; set; }
+    public double? LongTermInvestments { get; set; }
 
     [JsonPropertyName("otherCurrentAssets")]
-    public float? OtherCurrentAssets { get; set; }
+    public double? OtherCurrentAssets { get; set; }
 
     [JsonPropertyName("otherCurrentLiabilities")]
-    public float? OtherCurrentLiabilities { get; set; }
+    public double? OtherCurrentLiabilities { get; set; }
 
     [JsonPropertyName("otherNonCurrentAssets")]
-    public float? OtherNonCurrentAssets { get; set; }
+    public double? OtherNonCurrentAssets { get; set; }
 
     [JsonPropertyName("otherNonCurrentLiabilities")]
-    public float? OtherNonCurrentLiabilities { get; set; }
+    public double? OtherNonCurrentLiabilities { get; set; }
 
     [JsonPropertyName("propertyPlantEquipment")]
-    public float? PropertyPlantEquipment { get; set; }
+    public double? PropertyPlantEquipment { get; set; }
 
     [JsonPropertyName("reportedCurrency")]
     public required string ReportedCurrency { get; set; }
 
     [JsonPropertyName("retainedEarnings")]
-    public float? RetainedEarnings { get; set; }
+    public double? RetainedEarnings { get; set; }
 
     [JsonPropertyName("shortLongTermDebtTotal")]
-    public float? ShortLongTermDebtTotal { get; set; }
+    public double? ShortLongTermDebtTotal { get; set; }
 
     [JsonPropertyName("shortTermDebt")]
-    public float? ShortTermDebt { get; set; }
+    public double? ShortTermDebt { get; set; }
 
     [JsonPropertyName("shortTermInvestments")]
-    public float? ShortTermInvestments { get; set; }
+    public double? ShortTermInvestments { get; set; }
 
     [JsonPropertyName("totalAssets")]
-    public float? TotalAssets { get; set; }
+    public double? TotalAssets { get; set; }
 
     [JsonPropertyName("totalCurrentAssets")]
-    public float? TotalCurrentAssets { get; set; }
+    public double? TotalCurrentAssets { get; set; }
 
     [JsonPropertyName("totalCurrentLiabilities")]
-    public float? TotalCurrentLiabilities { get; set; }
+    public double? TotalCurrentLiabilities { get; set; }
 
     [JsonPropertyName("totalLiabilities")]
-    public float? TotalLiabilities { get; set; }
+    public double? TotalLiabilities { get; set; }
 
     [JsonPropertyName("totalNonCurrentAssets")]
-    public float? TotalNonCurrentAssets { get; set; }
+    public double? TotalNonCurrentAssets { get; set; }
 
     [JsonPropertyName("totalNonCurrentLiabilities")]
-    public float? TotalNonCurrentLiabilities { get; set; }
+    public double? TotalNonCurrentLiabilities { get; set; }
 
     [JsonPropertyName("totalShareholderEquity")]
-    public float? TotalShareholderEquity { get; set; }
+    public double? TotalShareholderEquity { get; set; }
 
     [JsonPropertyName("treasuryStock")]
-    public float? TreasuryStock { get; set; }
+    public double? TreasuryStock { get; set; }
 }

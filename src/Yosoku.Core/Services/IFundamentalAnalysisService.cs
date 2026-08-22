@@ -2,5 +2,5 @@
 
 public interface IFundamentalAnalysisService
 {
-    float CalculatePERatio(float currentPrice, float netIncome, float sharesOutstanding);
+    double CalculatePERatio(double currentPrice, double netIncome, double sharesOutstanding);
 }

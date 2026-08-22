@@ -4,27 +4,29 @@ using System.Text.Json.Serialization;
 
 namespace Yosoku.AlphaVantage.JsonConverters;
 
-public class NoneSafeFloatConverter(ILogger<NoneSafeFloatConverter> logger) : JsonConverter<float?>
+public class NoneSafeFloatConverter(ILogger<NoneSafeFloatConverter> logger) : JsonConverter<double?>
 {
-    public override float? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    public override double? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
         string? jsonString = reader.GetString();
 
-        if (string.IsNullOrEmpty(jsonString) || string.Equals("None", jsonString, StringComparison.OrdinalIgnoreCase))
+        if (string.IsNullOrEmpty(jsonString) 
+            || string.Equals("None", jsonString, StringComparison.OrdinalIgnoreCase) 
+            || string.Equals("-", jsonString, StringComparison.OrdinalIgnoreCase))
         {
             return null;
         }
 
-        if (float.TryParse(jsonString, out float result))
+        if (double.TryParse(jsonString, out double result))
         {
             return result;
         }
 
-        logger.LogWarning($"Could not parse '{jsonString}' into a float.");
+        logger.LogWarning($"Could not parse '{jsonString}' into a double.");
         return null;
     }
 
-    public override void Write(Utf8JsonWriter writer, float? value, JsonSerializerOptions options)
+    public override void Write(Utf8JsonWriter writer, double? value, JsonSerializerOptions options)
     {
         throw new NotImplementedException("Writing is not implemented for NoneSafeFloatConverter.");
     }

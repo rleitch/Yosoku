@@ -1,5 +1,4 @@
 ﻿using System.Text.Json.Serialization;
-using Yosoku.AlphaVantage.JsonConverters;
 
 namespace Yosoku.AlphaVantage.Models;
 
@@ -7,82 +6,82 @@ public class IncomeStatement
 {
     // Core Income Metrics
     [JsonPropertyName("comprehensiveIncomeNetOfTax")]
-    public float? ComprehensiveIncomeNetOfTax { get; set; }
+    public double? ComprehensiveIncomeNetOfTax { get; set; }
 
     [JsonPropertyName("costofGoodsAndServicesSold")]
-    public float? CostOfGoodsAndServicesSold { get; set; }
+    public double? CostOfGoodsAndServicesSold { get; set; }
 
     [JsonPropertyName("costOfRevenue")]
-    public float? CostOfRevenue { get; set; }
+    public double? CostOfRevenue { get; set; }
 
     [JsonPropertyName("depreciation")]
-    public float? Depreciation { get; set; }
+    public double? Depreciation { get; set; }
 
     [JsonPropertyName("depreciationAndAmortization")]
-    public float? DepreciationAndAmortization { get; set; }
+    public double? DepreciationAndAmortization { get; set; }
 
     [JsonPropertyName("ebit")]
-    public float? Ebit { get; set; }
+    public double? Ebit { get; set; }
 
     [JsonPropertyName("ebitda")]
-    public float? Ebitda { get; set; }
+    public double? Ebitda { get; set; }
 
     // Date field, no converter needed.
     [JsonPropertyName("fiscalDateEnding")]
     public DateOnly FiscalDateEnding { get; set; }
 
     [JsonPropertyName("grossProfit")]
-    public float? GrossProfit { get; set; }
+    public double? GrossProfit { get; set; }
 
     [JsonPropertyName("incomeBeforeTax")]
-    public float? IncomeBeforeTax { get; set; }
+    public double? IncomeBeforeTax { get; set; }
 
     [JsonPropertyName("incomeTaxExpense")]
-    public float? IncomeTaxExpense { get; set; }
+    public double? IncomeTaxExpense { get; set; }
 
     [JsonPropertyName("interestAndDebtExpense")]
-    public float? InterestAndDebtExpense { get; set; }
+    public double? InterestAndDebtExpense { get; set; }
 
     [JsonPropertyName("interestExpense")]
-    public float? InterestExpense { get; set; }
+    public double? InterestExpense { get; set; }
 
     [JsonPropertyName("interestIncome")]
-    public float? InterestIncome { get; set; }
+    public double? InterestIncome { get; set; }
 
     [JsonPropertyName("investmentIncomeNet")]
-    public float? InvestmentIncomeNet { get; set; }
+    public double? InvestmentIncomeNet { get; set; }
 
     [JsonPropertyName("netIncome")]
-    public float? NetIncome { get; set; }
+    public double? NetIncome { get; set; }
 
     [JsonPropertyName("netIncomeFromContinuingOperations")]
-    public float? NetIncomeFromContinuingOperations { get; set; }
+    public double? NetIncomeFromContinuingOperations { get; set; }
 
     [JsonPropertyName("netInterestIncome")]
-    public float? NetInterestIncome { get; set; }
+    public double? NetInterestIncome { get; set; }
 
     [JsonPropertyName("nonInterestIncome")]
-    public float? NonInterestIncome { get; set; }
+    public double? NonInterestIncome { get; set; }
 
     [JsonPropertyName("operatingExpenses")]
-    public float? OperatingExpenses { get; set; }
+    public double? OperatingExpenses { get; set; }
 
     [JsonPropertyName("operatingIncome")]
-    public float? OperatingIncome { get; set; }
+    public double? OperatingIncome { get; set; }
 
     [JsonPropertyName("otherNonOperatingIncome")]
-    public float? OtherNonOperatingIncome { get; set; }
+    public double? OtherNonOperatingIncome { get; set; }
 
     // Currency string, no converter needed.
     [JsonPropertyName("reportedCurrency")]
     public required string ReportedCurrency { get; set; }
 
     [JsonPropertyName("researchAndDevelopment")]
-    public float? ResearchAndDevelopment { get; set; }
+    public double? ResearchAndDevelopment { get; set; }
 
     [JsonPropertyName("sellingGeneralAndAdministrative")]
-    public float? SellingGeneralAndAdministrative { get; set; }
+    public double? SellingGeneralAndAdministrative { get; set; }
 
     [JsonPropertyName("totalRevenue")]
-    public float? TotalRevenue { get; set; }
+    public double? TotalRevenue { get; set; }
 }

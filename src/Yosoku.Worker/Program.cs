@@ -8,6 +8,7 @@ using Yosoku.Worker;
 using Yosoku.Worker.Configuration;
 using Yosoku.Worker.Extensions;
 using Yosoku.Worker.Interfaces;
+using Yosoku.Worker.Services;
 
 internal class Program
 {
@@ -38,7 +39,7 @@ internal class Program
                 };
                 return options;
             })
-            .AddSingleton<IMultiFactorScorer, MultiFactorScorer>();
+            .AddSingleton<IFinancialDataService, FinancialDataService>();
 
         var host = builder.Build();
         host.Run();

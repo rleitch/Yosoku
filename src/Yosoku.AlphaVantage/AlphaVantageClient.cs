@@ -66,13 +66,18 @@ public class AlphaVantageClient(
         return await ThrottleAndGetFromJsonAsync<EtfProfile>("ETF_PROFILE", symbol, token);
     }
 
+    public async Task<CompanyOverview> GetCompanyOverview(string ticker, CancellationToken cancellationToken)
+    {
+        return await ThrottleAndGetFromJsonAsync<CompanyOverview>("OVERVIEW", ticker, cancellationToken);
+    }
+
     private async Task<T> ThrottleAndGetFromJsonAsync<T>(
         string functionName, 
         string symbol, 
         CancellationToken token = default)
     {
-        var cacheKey = $"v1:{functionName}:{symbol.ToUpper()}";
-        var url = $"query?function={functionName}&symbol={symbol.ToUpper()}";
+        var cacheKey = $"v2:{functionName}:{symbol.ToUpper()}";
+        var url = $"query?function={functionName}&symbol={symbol.ToUpper()}&outputsize=full";
 
         var response = await cache.GetStringAsync(cacheKey, token);
         if (response == null)
@@ -92,7 +97,7 @@ public class AlphaVantageClient(
             ?? throw new Exception($"Failed to deserialize cached response from {cacheKey}. Result was null.");
     }
 
-    private async Task Wait(float rpm = 73F)
+    private async Task Wait(double rpm = 73F)
     {
         await _throttleSemaphore.WaitAsync();
         try
