@@ -26,8 +26,27 @@ public class Worker(
             holdings.AddRange(etfProfile.Holdings.Select(h => h.Symbol));
             holdings.AddRange(etfProfile2.Holdings.Select(h => h.Symbol));
 
-            //var chingy = await financialDataService.GetFinancialDataAsync("SNOW", stoppingToken);
-            var chingy = await financialDataService.GetFinancialDataAsync([.. holdings.Distinct()], stoppingToken);
+            holdings = [.. holdings.Distinct()];
+
+
+
+            var chingy1 = await financialDataService.GetFinancialDataAsync("JLL", stoppingToken);
+
+            var chingy2 = chingy1.IncomeStatements.OrderByDescending(s => s.Key).Skip(1).Take(4).ToList();
+
+            var totalGrossProfit = chingy2.Sum(c => c.Value.GrossProfit.GetValueOrDefault(0));
+
+            var totalRevenue = chingy2.Sum(c => c.Value.TotalRevenue.GetValueOrDefault(0));
+
+            var totalCostOfRevenue = chingy2.Sum(c => c.Value.CostOfRevenue.GetValueOrDefault(0));
+
+
+            var chingy = await financialDataService.GetFinancialDataAsync([.. holdings], stoppingToken);
+
+            foreach (var item in chingy)
+            {
+                logger.LogInformation("{ticker} Gross Margin: {grossMargin}", item.Ticker, item.QuarterlySummaries.OrderByDescending(s => s.Key).First().Value.GrossMargin);
+            }
 
             //var holdings = etfProfile.Holdings
             //    .OrderByDescending(h => h.Weight)

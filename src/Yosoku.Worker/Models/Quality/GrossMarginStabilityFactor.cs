@@ -14,7 +14,7 @@
 
 //        if (historicalISReports == null || historicalISReports.Length < 8)
 //        {
-//            return new FactorMetric(FactorName, double.NaN, FactorDirection.Decrease, default);
+//            return new FactorMetric(FactorName, decimal.NaN, FactorDirection.Decrease, default);
 //        }
 
 //        // 1. Extract the last 8 Gross Margin values
@@ -24,9 +24,9 @@
 //            .ToList();
 
 //        // 2. Calculate Standard Deviation (Sigma)
-//        double mean = last8Margins.Average();
-//        double variance = last8Margins.Sum(margin => Math.Pow(margin - mean, 2)) / last8Margins.Count;
-//        double stdDev = Math.Sqrt(variance);
+//        decimal mean = last8Margins.Average();
+//        decimal variance = last8Margins.Sum(margin => Math.Pow(margin - mean, 2)) / last8Margins.Count;
+//        decimal stdDev = Math.Sqrt(variance);
 
 //        // 3. Return FactorMetric
 //        // Direction: Lower sigma is better (less variation means more stability).

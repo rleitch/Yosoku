@@ -44,28 +44,13 @@ public class FinancialDataService(
 
             await Task.WhenAll(incomeStatementTask, balanceSheetTask, cashFlowTask, dailyTask, monthlyTask, overviewTask);
 
-            var sortedIncomeStatements = incomeStatementTask.Result.QuarterlyReports
-                .OrderBy(i => i.FiscalDateEnding).ToArray();
+            var overview = overviewTask.Result;
 
-            var sortedBalanceSheets = balanceSheetTask.Result.QuarterlyReports
-                .OrderBy(i => i.FiscalDateEnding).ToArray();
-
-            var sortedCashFlows = cashFlowTask.Result.QuarterlyReports
-                .OrderBy(i => i.FiscalDateEnding).ToArray();
-
-            return new FinancialData
-            {
-                IncomeStatements = sortedIncomeStatements,
-                CurrentIncomeStatement = sortedIncomeStatements[^1],
-                BalanceSheets = sortedBalanceSheets,
-                CurrentBalanceSheet = sortedBalanceSheets[^1],
-                CashFlows = sortedCashFlows,
-                CurrentCashFlow = sortedCashFlows[^1]
-            };
+            return new FinancialData(ticker, incomeStatementTask.Result, balanceSheetTask.Result, cashFlowTask.Result);
         }
         catch (Exception e)
         {
-            logger.LogError(e, $"Problem getting financial data for {ticker}");
+            logger.LogError(e, "Problem getting financial data for {ticker}", ticker);
             return null;
         }
     }

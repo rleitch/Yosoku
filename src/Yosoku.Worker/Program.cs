@@ -31,7 +31,7 @@ internal class Program
             .AddSingleton<JsonConverterFactory, NoneSafeFloatConverterFactory>()
             .AddSingleton(sp =>
             {
-                var logger = sp.GetRequiredService<ILogger<NoneSafeFloatConverter>>();
+                var logger = sp.GetRequiredService<ILogger<NoneSafeDecimalConverter>>();
                 var options = new JsonSerializerOptions
                 {
                     NumberHandling = JsonNumberHandling.AllowReadingFromString,

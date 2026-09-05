@@ -6,82 +6,82 @@ public class IncomeStatement
 {
     // Core Income Metrics
     [JsonPropertyName("comprehensiveIncomeNetOfTax")]
-    public double? ComprehensiveIncomeNetOfTax { get; set; }
+    public decimal? ComprehensiveIncomeNetOfTax { get; set; }
 
     [JsonPropertyName("costofGoodsAndServicesSold")]
-    public double? CostOfGoodsAndServicesSold { get; set; }
+    public decimal? CostOfGoodsAndServicesSold { get; set; }
 
     [JsonPropertyName("costOfRevenue")]
-    public double? CostOfRevenue { get; set; }
+    public decimal? CostOfRevenue { get; set; }
 
     [JsonPropertyName("depreciation")]
-    public double? Depreciation { get; set; }
+    public decimal? Depreciation { get; set; }
 
     [JsonPropertyName("depreciationAndAmortization")]
-    public double? DepreciationAndAmortization { get; set; }
+    public decimal? DepreciationAndAmortization { get; set; }
 
     [JsonPropertyName("ebit")]
-    public double? Ebit { get; set; }
+    public decimal? Ebit { get; set; }
 
     [JsonPropertyName("ebitda")]
-    public double? Ebitda { get; set; }
+    public decimal? Ebitda { get; set; }
 
     // Date field, no converter needed.
     [JsonPropertyName("fiscalDateEnding")]
     public DateOnly FiscalDateEnding { get; set; }
 
     [JsonPropertyName("grossProfit")]
-    public double? GrossProfit { get; set; }
+    public decimal? GrossProfit { get; set; }
 
     [JsonPropertyName("incomeBeforeTax")]
-    public double? IncomeBeforeTax { get; set; }
+    public decimal? IncomeBeforeTax { get; set; }
 
     [JsonPropertyName("incomeTaxExpense")]
-    public double? IncomeTaxExpense { get; set; }
+    public decimal? IncomeTaxExpense { get; set; }
 
     [JsonPropertyName("interestAndDebtExpense")]
-    public double? InterestAndDebtExpense { get; set; }
+    public decimal? InterestAndDebtExpense { get; set; }
 
     [JsonPropertyName("interestExpense")]
-    public double? InterestExpense { get; set; }
+    public decimal? InterestExpense { get; set; }
 
     [JsonPropertyName("interestIncome")]
-    public double? InterestIncome { get; set; }
+    public decimal? InterestIncome { get; set; }
 
     [JsonPropertyName("investmentIncomeNet")]
-    public double? InvestmentIncomeNet { get; set; }
+    public decimal? InvestmentIncomeNet { get; set; }
 
     [JsonPropertyName("netIncome")]
-    public double? NetIncome { get; set; }
+    public decimal? NetIncome { get; set; }
 
     [JsonPropertyName("netIncomeFromContinuingOperations")]
-    public double? NetIncomeFromContinuingOperations { get; set; }
+    public decimal? NetIncomeFromContinuingOperations { get; set; }
 
     [JsonPropertyName("netInterestIncome")]
-    public double? NetInterestIncome { get; set; }
+    public decimal? NetInterestIncome { get; set; }
 
     [JsonPropertyName("nonInterestIncome")]
-    public double? NonInterestIncome { get; set; }
+    public decimal? NonInterestIncome { get; set; }
 
     [JsonPropertyName("operatingExpenses")]
-    public double? OperatingExpenses { get; set; }
+    public decimal? OperatingExpenses { get; set; }
 
     [JsonPropertyName("operatingIncome")]
-    public double? OperatingIncome { get; set; }
+    public decimal? OperatingIncome { get; set; }
 
     [JsonPropertyName("otherNonOperatingIncome")]
-    public double? OtherNonOperatingIncome { get; set; }
+    public decimal? OtherNonOperatingIncome { get; set; }
 
     // Currency string, no converter needed.
     [JsonPropertyName("reportedCurrency")]
     public required string ReportedCurrency { get; set; }
 
     [JsonPropertyName("researchAndDevelopment")]
-    public double? ResearchAndDevelopment { get; set; }
+    public decimal? ResearchAndDevelopment { get; set; }
 
     [JsonPropertyName("sellingGeneralAndAdministrative")]
-    public double? SellingGeneralAndAdministrative { get; set; }
+    public decimal? SellingGeneralAndAdministrative { get; set; }
 
     [JsonPropertyName("totalRevenue")]
-    public double? TotalRevenue { get; set; }
+    public decimal? TotalRevenue { get; set; }
 }

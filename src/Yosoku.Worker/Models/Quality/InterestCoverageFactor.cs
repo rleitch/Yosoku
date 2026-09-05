@@ -13,15 +13,15 @@
 //        if (IS?.Ebit == null || IS.InterestAndDebtExpense == null)
 //        {
 //            // Not a calculable period
-//            return new FactorMetric(FactorName, double.NaN, FactorDirection.Increase, default);
+//            return new FactorMetric(FactorName, decimal.NaN, FactorDirection.Increase, default);
 //        }
 
 //        // Formula: EBIT / InterestAndDebtExpense
-//        double numerator = IS.Ebit.Value;
-//        double denominator = IS.InterestAndDebtExpense.Value;
+//        decimal numerator = IS.Ebit.Value;
+//        decimal denominator = IS.InterestAndDebtExpense.Value;
 
 //        // Handle division by zero to prevent runtime errors
-//        double coverageRatio = (denominator != 0) ? (numerator / denominator) : double.NaN;
+//        decimal coverageRatio = (denominator != 0) ? (numerator / denominator) : decimal.NaN;
 
 //        return new FactorMetric(FactorName, coverageRatio, FactorDirection.Increase, IS.FiscalDateEnding);
 //    }

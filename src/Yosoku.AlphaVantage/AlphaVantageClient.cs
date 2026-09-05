@@ -97,7 +97,7 @@ public class AlphaVantageClient(
             ?? throw new Exception($"Failed to deserialize cached response from {cacheKey}. Result was null.");
     }
 
-    private async Task Wait(double rpm = 73F)
+    private async Task Wait(double rpm = 73)
     {
         await _throttleSemaphore.WaitAsync();
         try

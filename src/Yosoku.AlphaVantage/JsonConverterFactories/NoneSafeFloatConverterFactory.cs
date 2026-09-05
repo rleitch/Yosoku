@@ -6,19 +6,19 @@ using Yosoku.AlphaVantage.JsonConverters;
 namespace Yosoku.AlphaVantage.JsonConverterFactories;
 
 public class NoneSafeFloatConverterFactory(
-    ILogger<NoneSafeFloatConverter> logger) 
+    ILogger<NoneSafeDecimalConverter> logger) 
     : JsonConverterFactory
 {
     public override bool CanConvert(
         Type typeToConvert)
     {
-        return typeToConvert == typeof(double?);
+        return typeToConvert == typeof(decimal?);
     }
 
-    public override JsonConverter<double?> CreateConverter(
+    public override JsonConverter<decimal?> CreateConverter(
         Type typeToConvert, 
         JsonSerializerOptions options)
     {
-        return new NoneSafeFloatConverter(logger);
+        return new NoneSafeDecimalConverter(logger);
     }
 }

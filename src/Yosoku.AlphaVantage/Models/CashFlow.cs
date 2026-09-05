@@ -5,92 +5,92 @@ namespace Yosoku.AlphaVantage.Models;
 public class CashFlow
 {
     [JsonPropertyName("capitalExpenditures")]
-    public double CapitalExpenditures { get; set; }
+    public decimal? CapitalExpenditures { get; set; }
 
     [JsonPropertyName("cashflowFromFinancing")]
-    public double? CashflowFromFinancing { get; set; }
+    public decimal? CashflowFromFinancing { get; set; }
 
     [JsonPropertyName("cashflowFromInvestment")]
-    public double? CashflowFromInvestment { get; set; }
+    public decimal? CashflowFromInvestment { get; set; }
 
     [JsonPropertyName("changeInCashAndCashEquivalents")]
-    public double? ChangeInCashAndCashEquivalents { get; set; }
+    public decimal? ChangeInCashAndCashEquivalents { get; set; }
 
     [JsonPropertyName("changeInExchangeRate")]
-    public double? ChangeInExchangeRate { get; set; }
+    public decimal? ChangeInExchangeRate { get; set; }
 
     [JsonPropertyName("changeInInventory")]
-    public double? ChangeInInventory { get; set; }
+    public decimal? ChangeInInventory { get; set; }
 
     [JsonPropertyName("changeInOperatingAssets")]
-    public double? ChangeInOperatingAssets { get; set; }
+    public decimal? ChangeInOperatingAssets { get; set; }
 
     [JsonPropertyName("changeInOperatingLiabilities")]
-    public double? ChangeInOperatingLiabilities { get; set; }
+    public decimal? ChangeInOperatingLiabilities { get; set; }
 
     [JsonPropertyName("changeInReceivables")]
-    public double? ChangeInReceivables { get; set; }
+    public decimal? ChangeInReceivables { get; set; }
 
     [JsonPropertyName("depreciationDepletionAndAmortization")]
-    public double? DepreciationDepletionAndAmortization { get; set; }
+    public decimal? DepreciationDepletionAndAmortization { get; set; }
 
     [JsonPropertyName("dividendPayout")]
-    public double? DividendPayout { get; set; }
+    public decimal? DividendPayout { get; set; }
 
     [JsonPropertyName("dividendPayoutCommonStock")]
-    public double? DividendPayoutCommonStock { get; set; }
+    public decimal? DividendPayoutCommonStock { get; set; }
 
     [JsonPropertyName("dividendPayoutPreferredStock")]
-    public double? DividendPayoutPreferredStock { get; set; }
+    public decimal? DividendPayoutPreferredStock { get; set; }
 
     [JsonPropertyName("fiscalDateEnding")]
     public DateOnly FiscalDateEnding { get; set; }
 
     [JsonPropertyName("netIncome")]
-    public double? NetIncome { get; set; }
+    public decimal? NetIncome { get; set; }
 
     [JsonPropertyName("operatingCashflow")]
-    public double? OperatingCashflow { get; set; }
+    public decimal? OperatingCashflow { get; set; }
 
     [JsonPropertyName("paymentsForOperatingActivities")]
-    public double? PaymentsForOperatingActivities { get; set; }
+    public decimal? PaymentsForOperatingActivities { get; set; }
 
     [JsonPropertyName("paymentsForRepurchaseOfCommonStock")]
-    public double? PaymentsForRepurchaseOfCommonStock { get; set; }
+    public decimal? PaymentsForRepurchaseOfCommonStock { get; set; }
 
     [JsonPropertyName("paymentsForRepurchaseOfEquity")]
-    public double? PaymentsForRepurchaseOfEquity { get; set; }
+    public decimal? PaymentsForRepurchaseOfEquity { get; set; }
 
     [JsonPropertyName("paymentsForRepurchaseOfPreferredStock")]
-    public double? PaymentsForRepurchaseOfPreferredStock { get; set; }
+    public decimal? PaymentsForRepurchaseOfPreferredStock { get; set; }
 
     [JsonPropertyName("proceedsFromIssuanceOfCommonStock")]
-    public double? ProceedsFromIssuanceOfCommonStock { get; set; }
+    public decimal? ProceedsFromIssuanceOfCommonStock { get; set; }
 
     [JsonPropertyName("proceedsFromIssuanceOfLongTermDebtAndCapitalSecuritiesNet")]
-    public double? ProceedsFromIssuanceOfLongTermDebtAndCapitalSecuritiesNet { get; set; }
+    public decimal? ProceedsFromIssuanceOfLongTermDebtAndCapitalSecuritiesNet { get; set; }
 
     [JsonPropertyName("proceedsFromIssuanceOfPreferredStock")]
-    public double? ProceedsFromIssuanceOfPreferredStock { get; set; }
+    public decimal? ProceedsFromIssuanceOfPreferredStock { get; set; }
 
     [JsonPropertyName("proceedsFromOperatingActivities")]
-    public double? ProceedsFromOperatingActivities { get; set; }
+    public decimal? ProceedsFromOperatingActivities { get; set; }
 
     [JsonPropertyName("proceedsFromRepaymentsOfShortTermDebt")]
-    public double? ProceedsFromRepaymentsOfShortTermDebt { get; set; }
+    public decimal? ProceedsFromRepaymentsOfShortTermDebt { get; set; }
 
     [JsonPropertyName("proceedsFromRepurchaseOfEquity")]
-    public double? ProceedsFromRepurchaseOfEquity { get; set; }
+    public decimal? ProceedsFromRepurchaseOfEquity { get; set; }
 
     [JsonPropertyName("proceedsFromSaleOfTreasuryStock")]
-    public double? ProceedsFromSaleOfTreasuryStock { get; set; }
+    public decimal? ProceedsFromSaleOfTreasuryStock { get; set; }
 
     [JsonPropertyName("profitLoss")]
-    public double? ProfitLoss { get; set; }
+    public decimal? ProfitLoss { get; set; }
 
     [JsonPropertyName("reportedCurrency")]
     public string? ReportedCurrency { get; set; }
 
     [JsonPropertyName("stockBasedCompensation")]
-    public double? StockBasedCompensation { get; set; }
+    public decimal? StockBasedCompensation { get; set; }
 }

@@ -18,53 +18,53 @@ namespace Yosoku.AlphaVantage.Models
         public required string OfficialSite { get; set; }
         public required string FiscalYearEnd { get; set; }
         public required string LatestQuarter { get; set; }
-        public double MarketCapitalization { get; set; }
-        public double? EBITDA { get; set; }
-        public double? PERatio { get; set; }
-        public double? PEGRatio { get; set; }
-        public double? BookValue { get; set; }
-        public double? DividendPerShare { get; set; }
-        public double? DividendYield { get; set; }
-        public double? EPS { get; set; }
-        public double RevenuePerShareTTM { get; set; }
-        public double ProfitMargin { get; set; }
-        public double OperatingMarginTTM { get; set; }
-        public double ReturnOnAssetsTTM { get; set; }
-        public double ReturnOnEquityTTM { get; set; }
-        public double RevenueTTM { get; set; }
-        public double GrossProfitTTM { get; set; }
-        public double DilutedEPSTTM { get; set; }
-        public double QuarterlyEarningsGrowthYOY { get; set; }
-        public double QuarterlyRevenueGrowthYOY { get; set; }
+        public decimal MarketCapitalization { get; set; }
+        public decimal? EBITDA { get; set; }
+        public decimal? PERatio { get; set; }
+        public decimal? PEGRatio { get; set; }
+        public decimal? BookValue { get; set; }
+        public decimal? DividendPerShare { get; set; }
+        public decimal? DividendYield { get; set; }
+        public decimal? EPS { get; set; }
+        public decimal RevenuePerShareTTM { get; set; }
+        public decimal ProfitMargin { get; set; }
+        public decimal OperatingMarginTTM { get; set; }
+        public decimal ReturnOnAssetsTTM { get; set; }
+        public decimal ReturnOnEquityTTM { get; set; }
+        public decimal RevenueTTM { get; set; }
+        public decimal GrossProfitTTM { get; set; }
+        public decimal DilutedEPSTTM { get; set; }
+        public decimal QuarterlyEarningsGrowthYOY { get; set; }
+        public decimal QuarterlyRevenueGrowthYOY { get; set; }
         public required string AnalystRatingStrongBuy { get; set; }
         public required string AnalystRatingBuy { get; set; }
         public required string AnalystRatingHold { get; set; }
         public required string AnalystRatingSell { get; set; }
         public required string AnalystRatingStrongSell { get; set; }
-        public double? TrailingPE { get; set; }
-        public double? ForwardPE { get; set; }
-        public double PriceToSalesRatioTTM { get; set; }
-        public double? PriceToBookRatio { get; set; }
-        public double EVToRevenue { get; set; }
-        public double? EVToEBITDA { get; set; }
-        public double? Beta { get; set; }
+        public decimal? TrailingPE { get; set; }
+        public decimal? ForwardPE { get; set; }
+        public decimal? PriceToSalesRatioTTM { get; set; }
+        public decimal? PriceToBookRatio { get; set; }
+        public decimal? EVToRevenue { get; set; }
+        public decimal? EVToEBITDA { get; set; }
+        public decimal? Beta { get; set; }
 
         [JsonPropertyName("52WeekHigh")]
-        public double Week52High { get; set; }
+        public decimal Week52High { get; set; }
 
         [JsonPropertyName("52WeekLow")]
-        public double Week52Low { get; set; }
+        public decimal Week52Low { get; set; }
 
         [JsonPropertyName("50DayMovingAverage")]
-        public double Day50MovingAverage { get; set; }
+        public decimal Day50MovingAverage { get; set; }
 
         [JsonPropertyName("200DayMovingAverage")]
-        public double Day200MovingAverage { get; set; }
+        public decimal Day200MovingAverage { get; set; }
 
-        public double SharesOutstanding { get; set; }
-        public double SharesFloat { get; set; }
-        public double PercentInsiders { get; set; }
-        public double PercentInstitutions { get; set; }
+        public decimal SharesOutstanding { get; set; }
+        public decimal SharesFloat { get; set; }
+        public decimal PercentInsiders { get; set; }
+        public decimal PercentInstitutions { get; set; }
         public required string DividendDate { get; set; }
         public required string ExDividendDate { get; set; }
     }

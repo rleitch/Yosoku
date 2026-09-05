@@ -15,13 +15,13 @@
 //        // Accruals Ratio = (NetIncome - OperatingCashflow) / TotalAssets
 //        if (IS?.NetIncome == null || CF?.OperatingCashflow == null || BS?.TotalAssets == null)
 //        {
-//            return new FactorMetric(FactorName, double.NaN, FactorDirection.Decrease, default);
+//            return new FactorMetric(FactorName, decimal.NaN, FactorDirection.Decrease, default);
 //        }
 
-//        double accruals = (IS.NetIncome.Value - CF.OperatingCashflow.Value);
-//        double totalAssets = BS.TotalAssets.Value;
+//        decimal accruals = (IS.NetIncome.Value - CF.OperatingCashflow.Value);
+//        decimal totalAssets = BS.TotalAssets.Value;
 
-//        double ratio = (accruals / totalAssets);
+//        decimal ratio = (accruals / totalAssets);
 
 //        // Direction: Lower = Better (Decrease)
 //        return new FactorMetric(FactorName, ratio, FactorDirection.Decrease, IS.FiscalDateEnding);

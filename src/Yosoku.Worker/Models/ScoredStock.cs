@@ -3,13 +3,13 @@
 public class ScoredStock
 {
     public required string Symbol { get; set; }
-    public double TotalScore { get; set; }
-    public Dictionary<string, double> FactorScores { get; set; } = [];
+    public decimal TotalScore { get; set; }
+    public Dictionary<string, decimal> FactorScores { get; set; } = [];
 }
 public class StockRawData
 {
     public string Symbol { get; set; } = "";
-    public double QualityRaw { get; set; }
-    public double ProfitRaw { get; set; }
-    public double MomentumRaw { get; set; }
+    public decimal QualityRaw { get; set; }
+    public decimal ProfitRaw { get; set; }
+    public decimal MomentumRaw { get; set; }
 }

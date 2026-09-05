@@ -4,15 +4,46 @@ namespace Yosoku.Worker.Models;
 
 public class FinancialData
 {
-    public required IncomeStatement[] IncomeStatements { get; init; }
+    public FinancialData(
+        string ticker,
+        CompanyStatements<IncomeStatement> incomeStatements,
+        CompanyStatements<BalanceSheet> balanceSheets,
+        CompanyStatements<CashFlow> cashFlows)
+    {
+        Ticker = ticker;
 
-    public required IncomeStatement CurrentIncomeStatement { get; init; }
+        IncomeStatements = incomeStatements.QuarterlyReports
+            .ToDictionary(q => q.FiscalDateEnding);
 
-    public required BalanceSheet[] BalanceSheets { get; init; }
+        var BalanceSheetsByDate = balanceSheets.QuarterlyReports
+            .ToDictionary(q => q.FiscalDateEnding);
 
-    public required BalanceSheet CurrentBalanceSheet { get; init; }
+        var CashFlowsByDate = cashFlows.QuarterlyReports
+            .ToDictionary(q => q.FiscalDateEnding);
 
-    public required CashFlow[] CashFlows { get; init; }
+        AllDates = [.. IncomeStatements.Keys];
+        AllDates.UnionWith(BalanceSheetsByDate.Keys);
+        AllDates.UnionWith(CashFlowsByDate.Keys);
 
-    public required CashFlow CurrentCashFlow { get; init; }
+        QuarterlySummaries = new Dictionary<DateOnly, QuarterlySummary>(AllDates.Count);
+
+        foreach (var date in AllDates)
+        {
+            QuarterlySummaries.Add(
+                date, 
+                new QuarterlySummary(
+                    date,
+                    IncomeStatements.GetValueOrDefault(date),
+                    BalanceSheetsByDate.GetValueOrDefault(date), 
+                    CashFlowsByDate.GetValueOrDefault(date)));
+        }
+    }
+
+    public string Ticker { get; set; }
+
+    public HashSet<DateOnly> AllDates { get; set; } = [];
+
+    public Dictionary<DateOnly, QuarterlySummary> QuarterlySummaries { get; set; } = [];
+
+    public Dictionary<DateOnly, IncomeStatement> IncomeStatements { get; set; } = [];
 }

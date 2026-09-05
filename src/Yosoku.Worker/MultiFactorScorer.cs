@@ -76,11 +76,11 @@
 //            var current = allIncome[0];
 //            var past = allIncome.Skip(1).ToList();
 
-//            double currentMargin = current.Ebit / current.TotalRevenue;
+//            decimal currentMargin = current.Ebit / current.TotalRevenue;
 
-//            double avgPastMargin = past.Average(i => i.Ebit / i.TotalRevenue);
+//            decimal avgPastMargin = past.Average(i => i.Ebit / i.TotalRevenue);
 
-//            double p = 0;
+//            decimal p = 0;
 //            if (avgPastMargin != 0)
 //            {
 //                p = currentMargin / avgPastMargin;
@@ -107,7 +107,7 @@
 //            var q = latestBalanceSheets
 //                .Average(r => r.TotalLiabilities / r.TotalShareholderEquity);
 
-//            double m = CalculateSmaMomentum(price.MonthlyTimeSeries);
+//            decimal m = CalculateSmaMomentum(price.MonthlyTimeSeries);
 
 //            return new StockRawData { Symbol = symbol, QualityRaw = q, ProfitRaw = p, MomentumRaw = m };
 //        }
@@ -118,7 +118,7 @@
 //        }
 //    }
 
-//    private static double CalculatePercentile(double value, List<double> sortedValues, bool isHigherBetter)
+//    private static decimal CalculatePercentile(decimal value, List<decimal> sortedValues, bool isHigherBetter)
 //    {
 //        if (sortedValues.Count == 0)
 //        {
@@ -131,14 +131,14 @@
 //            index = ~index;
 //        }
 
-//        double count = isHigherBetter
+//        decimal count = isHigherBetter
 //            ? index
 //            : (sortedValues.Count - index);
 
 //        return count / sortedValues.Count;
 //    }
 
-//    private static double? GetBestEbit(IncomeStatement i)
+//    private static decimal? GetBestEbit(IncomeStatement i)
 //    {
 //        if (i.Ebit.HasValue)
 //        {
@@ -158,11 +158,11 @@
 //        return i.NetIncome;
 //    }
 
-//    private record SmallBalanceSheet(double TotalLiabilities, double TotalShareholderEquity);
+//    private record SmallBalanceSheet(decimal TotalLiabilities, decimal TotalShareholderEquity);
 
-//    private record SmallIncomeStatement(double Ebit, double TotalRevenue);
+//    private record SmallIncomeStatement(decimal Ebit, decimal TotalRevenue);
 
-//    private static double CalculateSmaMomentum(
+//    private static decimal CalculateSmaMomentum(
 //    Dictionary<DateOnly, Quote> monthlySeries,
 //    int shortPeriod = 6,
 //    int longPeriod = 12)

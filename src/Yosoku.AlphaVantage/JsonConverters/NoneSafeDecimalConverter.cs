@@ -4,9 +4,9 @@ using System.Text.Json.Serialization;
 
 namespace Yosoku.AlphaVantage.JsonConverters;
 
-public class NoneSafeFloatConverter(ILogger<NoneSafeFloatConverter> logger) : JsonConverter<double?>
+public class NoneSafeDecimalConverter(ILogger<NoneSafeDecimalConverter> logger) : JsonConverter<decimal?>
 {
-    public override double? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    public override decimal? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
         string? jsonString = reader.GetString();
 
@@ -17,16 +17,16 @@ public class NoneSafeFloatConverter(ILogger<NoneSafeFloatConverter> logger) : Js
             return null;
         }
 
-        if (double.TryParse(jsonString, out double result))
+        if (decimal.TryParse(jsonString, out decimal result))
         {
             return result;
         }
 
-        logger.LogWarning($"Could not parse '{jsonString}' into a double.");
+        logger.LogWarning($"Could not parse '{jsonString}' into a decimal.");
         return null;
     }
 
-    public override void Write(Utf8JsonWriter writer, double? value, JsonSerializerOptions options)
+    public override void Write(Utf8JsonWriter writer, decimal? value, JsonSerializerOptions options)
     {
         throw new NotImplementedException("Writing is not implemented for NoneSafeFloatConverter.");
     }

@@ -12,11 +12,11 @@
 
 //        if (IS?.TotalRevenue == null || IS.Ebitda == null)
 //        {
-//            return new FactorMetric(FactorName, double.NaN, FactorDirection.Increase, default);
+//            return new FactorMetric(FactorName, decimal.NaN, FactorDirection.Increase, default);
 //        }
 
 //        // EBITDA / Total Revenue
-//        double margin = (IS.Ebitda.Value / IS.TotalRevenue.Value);
+//        decimal margin = (IS.Ebitda.Value / IS.TotalRevenue.Value);
 
 //        return new FactorMetric(FactorName, margin, FactorDirection.Increase, IS.FiscalDateEnding);
 //    }
